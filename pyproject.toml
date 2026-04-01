@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "temporal-ordering"
+version = "0.1.0"
+description = "Temporal ordering dataset tooling and analysis"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy",
+  "Pillow",
+  "torch",
+  "open_clip_torch",
+  "matplotlib",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

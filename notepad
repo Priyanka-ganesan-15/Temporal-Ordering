@@ -1,0 +1,11 @@
+# By sequence ID
+python scripts/preview_sequence.py --sequence sequence_7
+
+# Interactive picker (lists all sequences)
+python scripts/preview_sequence.py
+
+# Reproducible shuffle
+python scripts/preview_sequence.py --sequence sequence_2 --seed 42
+
+
+

@@ -1,0 +1,128 @@
+[
+  {
+    "sequence_id": "sequence_1",
+    "category": "DIY",
+    "caption": "Building a small plant holder using paper and glue",
+    "difficulty": "easy",
+    "sequence_type": "procedural",
+    "num_frames": 8,
+    "frames": [
+      "Data/Sequence_1/001.png",
+      "Data/Sequence_1/002.png",
+      "Data/Sequence_1/003.png",
+      "Data/Sequence_1/004.png",
+      "Data/Sequence_1/005.png",
+      "Data/Sequence_1/006.png",
+      "Data/Sequence_1/007.png",
+      "Data/Sequence_1/008.png"
+    ]
+  },
+  {
+    "sequence_id": "sequence_2",
+    "category": "Plant Growth",
+    "caption": "Observing the growth of a plant over time",
+    "difficulty": "medium",
+    "sequence_type": "time_lapse",
+    "num_frames": 8,
+    "frames": [
+      "Data/Sequence_2/001.png",
+      "Data/Sequence_2/002.png",
+      "Data/Sequence_2/003.png",
+      "Data/Sequence_2/004.png",
+      "Data/Sequence_2/005.png",
+      "Data/Sequence_2/006.png",
+      "Data/Sequence_2/007.png",
+      "Data/Sequence_2/008.png"
+    ]
+  },
+  {
+    "sequence_id": "sequence_3",
+    "category": "Construction",
+    "caption": "Building a home over time with various stages of construction",
+    "difficulty": "hard",
+    "sequence_type": "time_lapse",
+    "num_frames": 8,
+    "frames": [
+      "Data/Sequence_3/001.png",
+      "Data/Sequence_3/002.png",
+      "Data/Sequence_3/003.png",
+      "Data/Sequence_3/004.png",
+      "Data/Sequence_3/005.png",
+      "Data/Sequence_3/006.png",
+      "Data/Sequence_3/007.png",
+      "Data/Sequence_3/008.png"
+    ]
+  },
+  {
+    "sequence_id": "sequence_4",
+    "category": "Plant Growth",
+    "caption": "Observing the growth of a plant over time with a strawberry seed",
+    "difficulty": "medium",
+    "sequence_type": "time_lapse",
+    "num_frames": 8,
+    "frames": [
+      "Data/Sequence_4/001.png",
+      "Data/Sequence_4/002.png",
+      "Data/Sequence_4/003.png",
+      "Data/Sequence_4/004.png",
+      "Data/Sequence_4/005.png",
+      "Data/Sequence_4/006.png",
+      "Data/Sequence_4/007.png",
+      "Data/Sequence_4/008.png"
+    ]
+  },
+  {
+    "sequence_id": "sequence_5",
+    "category": "DIY",
+    "caption": "Creating a handmade plant holder using paper and glue with a different design",
+    "difficulty": "easy",
+    "sequence_type": "procedural",
+    "num_frames": 8,
+    "frames": [
+      "Data/Sequence_5/001.png",
+      "Data/Sequence_5/002.png",
+      "Data/Sequence_5/003.png",
+      "Data/Sequence_5/004.png",
+      "Data/Sequence_5/005.png",
+      "Data/Sequence_5/006.png",
+      "Data/Sequence_5/007.png",
+      "Data/Sequence_5/008.png"
+    ]
+  },
+  {
+    "sequence_id": "sequence_6",
+    "category": "DIY",
+    "caption": "Building a cat house using wooden planks and nails",
+    "difficulty": "hard",
+    "sequence_type": "procedural",
+    "num_frames": 8,
+    "frames": [
+      "Data/Sequence_6/001.png",
+      "Data/Sequence_6/002.png",
+      "Data/Sequence_6/003.png",
+      "Data/Sequence_6/004.png",
+      "Data/Sequence_6/005.png",
+      "Data/Sequence_6/006.png",
+      "Data/Sequence_6/007.png",
+      "Data/Sequence_6/008.png"
+    ]
+  },
+  {
+    "sequence_id": "sequence_7",
+    "category": "Coffee",
+    "caption": "Making a cup of coffee from start to finish",
+    "difficulty": "easy",
+    "sequence_type": "procedural",
+    "num_frames": 8,
+    "frames": [
+      "Data/Sequence_7/001.png",
+      "Data/Sequence_7/002.png",
+      "Data/Sequence_7/003.png",
+      "Data/Sequence_7/004.png",
+      "Data/Sequence_7/005.png",
+      "Data/Sequence_7/006.png",
+      "Data/Sequence_7/007.png",
+      "Data/Sequence_7/008.png"
+    ]
+  }
+]

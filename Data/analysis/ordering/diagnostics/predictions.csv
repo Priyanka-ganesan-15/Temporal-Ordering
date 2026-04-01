@@ -1,0 +1,22 @@
+sequence_id,method,predicted_order,score
+sequence_1,random,1 4 5 3 2 6 0 7,nan
+sequence_1,greedy_nearest_neighbor,1 4 0 3 2 5 6 7,5.919444561004639
+sequence_1,continuity,1 4 0 2 3 5 6 7,5.6233707666397095
+sequence_2,random,0 4 7 2 6 3 1 5,nan
+sequence_2,greedy_nearest_neighbor,0 1 2 3 4 5 6 7,6.403134346008301
+sequence_2,continuity,3 2 1 0 4 5 6 7,6.05382764339447
+sequence_3,random,6 7 5 0 2 4 3 1,nan
+sequence_3,greedy_nearest_neighbor,7 0 1 2 3 4 5 6,6.260932445526123
+sequence_3,continuity,6 5 4 3 2 1 0 7,5.6854053139686584
+sequence_4,random,1 6 3 2 5 7 0 4,nan
+sequence_4,greedy_nearest_neighbor,0 1 2 3 4 5 6 7,6.1829118728637695
+sequence_4,continuity,0 1 2 3 4 5 6 7,5.90565299987793
+sequence_5,random,0 2 6 7 4 3 5 1,nan
+sequence_5,greedy_nearest_neighbor,6 7 2 4 1 0 3 5,5.881753444671631
+sequence_5,continuity,1 0 3 5 6 7 2 4,5.661770939826965
+sequence_6,random,4 1 2 7 5 6 0 3,nan
+sequence_6,greedy_nearest_neighbor,3 4 0 1 2 6 5 7,6.176123142242432
+sequence_6,continuity,3 4 0 1 2 6 5 7,5.955190598964691
+sequence_7,random,6 4 1 0 5 2 7 3,nan
+sequence_7,greedy_nearest_neighbor,5 4 0 1 2 7 3 6,5.7087225914001465
+sequence_7,continuity,5 4 0 2 1 3 7 6,5.560776948928833

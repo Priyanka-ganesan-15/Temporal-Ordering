@@ -1,0 +1,2 @@
+sequence_id,difficulty,sequence_type,near_mean,far_mean,contrast,heatmap
+sequence_1,easy,procedural,0.7995980978012085,0.7256609201431274,0.07393717765808105,Data/analysis/similarity/sequence_1_heatmap.png

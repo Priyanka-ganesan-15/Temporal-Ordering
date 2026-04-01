@@ -1,0 +1,16 @@
+method,taxonomy,count,fraction
+continuity,exact,1.0,0.14285714285714285
+continuity,reversed,0.0,0.0
+continuity,local_swap,0.0,0.0
+continuity,endpoint_error,0.0,0.0
+continuity,scrambled,6.0,0.8571428571428571
+greedy_nearest_neighbor,exact,2.0,0.2857142857142857
+greedy_nearest_neighbor,reversed,0.0,0.0
+greedy_nearest_neighbor,local_swap,0.0,0.0
+greedy_nearest_neighbor,endpoint_error,1.0,0.14285714285714285
+greedy_nearest_neighbor,scrambled,4.0,0.5714285714285714
+random,exact,0.0,0.0
+random,reversed,0.0,0.0
+random,local_swap,0.0,0.0
+random,endpoint_error,0.0,0.0
+random,scrambled,7.0,1.0

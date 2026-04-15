@@ -1,4 +1,7 @@
 numpy
+pandas
+plotly
+streamlit
 Pillow
 torch
 open_clip_torch

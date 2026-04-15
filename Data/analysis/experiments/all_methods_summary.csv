@@ -1,0 +1,6 @@
+method,n_sequences,mean_exact_match_accuracy,std_exact_match_accuracy,mean_pairwise_order_accuracy,std_pairwise_order_accuracy,mean_normalized_kendall_agreement,std_normalized_kendall_agreement,mean_kendall_tau,std_kendall_tau,mean_inversion_count,std_inversion_count
+continuity,7,0.0,0.0,0.25,0.1707,0.25,0.1707,-0.5,0.3415,21.0,4.7809
+greedy_nn,7,0.1429,0.3499,0.6122,0.3098,0.6122,0.3098,0.2245,0.6197,10.8571,8.6756
+insertion_sort,7,0.1429,0.3499,0.5867,0.3233,0.5867,0.3233,0.1735,0.6467,11.5714,9.0531
+random,7,0.0,0.0,0.6173,0.15,0.6173,0.15,0.2347,0.2999,10.7143,4.1991
+spectral,7,0.1429,0.3499,0.3469,0.357,0.3469,0.357,-0.3061,0.714,18.2857,9.9959

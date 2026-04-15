@@ -110,17 +110,19 @@ with st.sidebar:
     st.title("🕰️ ChronoLogic")
     st.caption("Temporal Image Ordering Research")
     st.divider()
+    st.caption("Report Flow")
     page = st.radio(
         "Navigate",
         [
-            "Executive Summary",
-            "Dataset Overview",
-            "Embedding Pipeline",
-            "Similarity Analysis",
-            "Ordering Experiments",
-            "Metrics & Results",
+            "Abstract",
+            "Dataset",
+            "Methods: Embedding",
+            "Methods: Similarity",
+            "Experiments: Ordering",
+            "Results",
             "Diagnostics",
-            "Future Directions",
+            "Ablations & Robustness",
+            "Conclusion",
         ],
         label_visibility="collapsed",
     )
@@ -131,9 +133,9 @@ with st.sidebar:
 # ═══════════════════════════════════════════════════════════════════════════════
 # PAGE 1 — EXECUTIVE SUMMARY
 # ═══════════════════════════════════════════════════════════════════════════════
-if page == "Executive Summary":
+if page == "Abstract":
     st.title("ChronoLogic: Temporal Image Sequence Ordering")
-    st.subheader("Executive Summary")
+    st.subheader("Abstract")
 
     st.markdown(
         """
@@ -225,8 +227,8 @@ if page == "Executive Summary":
 # ═══════════════════════════════════════════════════════════════════════════════
 # PAGE 2 — DATASET OVERVIEW
 # ═══════════════════════════════════════════════════════════════════════════════
-elif page == "Dataset Overview":
-    st.title("Dataset Overview")
+elif page == "Dataset":
+    st.title("Dataset")
     st.markdown(
         """
         Seven manually curated photo sequences each with **8 frames** representing a real-world
@@ -303,8 +305,8 @@ elif page == "Dataset Overview":
 # ═══════════════════════════════════════════════════════════════════════════════
 # PAGE 3 — EMBEDDING PIPELINE
 # ═══════════════════════════════════════════════════════════════════════════════
-elif page == "Embedding Pipeline":
-    st.title("Embedding Pipeline")
+elif page == "Methods: Embedding":
+    st.title("Methods: Embedding Pipeline")
     st.markdown(
         """
         All frames are encoded with **OpenCLIP (RN50, openai weights)** — a contrastively-trained
@@ -423,8 +425,8 @@ Ordering Algorithms         Diagnostics
 # ═══════════════════════════════════════════════════════════════════════════════
 # PAGE 4 — SIMILARITY ANALYSIS
 # ═══════════════════════════════════════════════════════════════════════════════
-elif page == "Similarity Analysis":
-    st.title("Similarity Analysis")
+elif page == "Methods: Similarity":
+    st.title("Methods: Similarity Analysis")
     st.markdown(
         """
         For each sequence we compute the **pairwise cosine similarity matrix** over frames in
@@ -546,8 +548,8 @@ elif page == "Similarity Analysis":
 # ═══════════════════════════════════════════════════════════════════════════════
 # PAGE 5 — ORDERING EXPERIMENTS
 # ═══════════════════════════════════════════════════════════════════════════════
-elif page == "Ordering Experiments":
-    st.title("Ordering Experiments")
+elif page == "Experiments: Ordering":
+    st.title("Experiments: Ordering")
     st.markdown("Three ordering methods were evaluated across all 7 sequences.")
 
     tab1, tab2, tab3 = st.tabs(["Method Descriptions", "Predictions", "Path Scores"])
@@ -659,8 +661,8 @@ elif page == "Ordering Experiments":
 # ═══════════════════════════════════════════════════════════════════════════════
 # PAGE 6 — METRICS & RESULTS
 # ═══════════════════════════════════════════════════════════════════════════════
-elif page == "Metrics & Results":
-    st.title("Metrics & Results")
+elif page == "Results":
+    st.title("Results")
     st.markdown(
         """
         Four complementary metrics are reported per (sequence, method) pair:
@@ -1118,13 +1120,49 @@ elif page == "Diagnostics":
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# PAGE 8 — FUTURE DIRECTIONS
+# PAGE 8 — CONCLUSION
 # ═══════════════════════════════════════════════════════════════════════════════
-elif page == "Future Directions":
-    st.title("Future Optimizations & Research Directions")
+elif page == "Conclusion":
+    st.title("Conclusion")
+    st.subheader("What this project demonstrates")
     st.markdown(
-        "Based on the diagnostic findings, six concrete improvement paths are identified, "
-        "with estimated pairwise accuracy gains."
+        "ChronoLogic shows that **frozen OpenCLIP embeddings already encode usable temporal structure**, "
+        "but simple graph heuristics are not yet enough for consistent chronological recovery across all sequence types."
+    )
+
+    c1, c2 = st.columns([1.2, 1])
+    with c1:
+        st.markdown(
+            """
+            **Final Takeaways**
+            - **Greedy nearest neighbor is the strongest current baseline** in this project.
+            - **Continuity-only scoring underperforms** and is sensitive to ambiguity.
+            - **Forward vs reverse remains unresolved** without directional semantics.
+            - **Dataset scale is currently the main bottleneck** (7 sequences is too small for strong claims).
+
+            **Bottom line:** this is a successful proof-of-concept for unsupervised temporal ordering,
+            and the next gains will come from direction-aware scoring + broader data coverage.
+            """
+        )
+    with c2:
+        st.info(
+            "Research conclusion: The representation quality is promising, but the inference objective "
+            "must include directional cues to move from moderate ordering to robust chronological reasoning."
+        )
+
+    st.markdown("### Limitations (to interpret results correctly)")
+    st.markdown(
+        """
+        - Small benchmark size (N=7) limits statistical confidence.
+        - Fixed-length sequences (8 frames) do not test variable-duration processes.
+        - Current headline runs use no active text-direction weighting.
+        - No human baseline yet, so practical headroom is unknown.
+        """
+    )
+
+    st.markdown("### Recommended next milestone")
+    st.markdown(
+        "Run a **direction-enabled continuity benchmark** on an expanded dataset and report mean ± std across multi-seed runs as the new primary result."
     )
 
     # ── Roadmap chart ──
@@ -1142,7 +1180,7 @@ elif page == "Future Directions":
         text=roadmap_df["Pairwise Accuracy"].apply(lambda v: f"{v:.0%}"),
         color="Pairwise Accuracy",
         color_continuous_scale="Blues",
-        title="Estimated Performance Roadmap (projected gains from future work)",
+        title="Projected Improvement Roadmap",
     )
     fig.add_vline(x=0.5, line_dash="dash", line_color="#aaa",
                   annotation_text="Random baseline")
@@ -1323,3 +1361,235 @@ streamlit run app.py""",
             {"Parameter": "Continuity w_dir", "Value": "0.0 (inactive)"},
             {"Parameter": "Continuity w_ep", "Value": "0.0 (inactive)"},
         ]), hide_index=True, use_container_width=True)
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PAGE 9 — NEW EXPERIMENTS
+# ═══════════════════════════════════════════════════════════════════════════════
+elif page == "Ablations & Robustness":
+    st.title("Ablations & Robustness")
+    st.markdown(
+        "Results from three new experiments: comparing all implemented methods "
+        "(including Spectral and Insertion-Sort), measuring robustness across "
+        "multiple random seeds, and sweeping the continuity weight hyper-parameters."
+    )
+
+    experiments_dir = DATA / "analysis" / "experiments"
+    tab1, tab2, tab3 = st.tabs(["All Methods", "Multi-Seed Robustness", "Weight Sweep"])
+
+    with tab1:
+        all_methods_path = experiments_dir / "all_methods_results.csv"
+        all_summary_path = experiments_dir / "all_methods_summary.csv"
+        if not all_methods_path.exists():
+            st.info("Results not found. Run: python scripts/run_experiments.py --exp 1")
+        else:
+            @st.cache_data
+            def load_all_methods() -> tuple[pd.DataFrame, pd.DataFrame]:
+                return pd.read_csv(all_methods_path), pd.read_csv(all_summary_path)
+
+            am_rows, am_summary = load_all_methods()
+            method_order = ["random", "greedy_nn", "continuity", "spectral", "insertion_sort"]
+            am_summary["method"] = pd.Categorical(am_summary["method"], categories=method_order, ordered=True)
+            am_summary = am_summary.sort_values("method")
+
+            left, right = st.columns(2)
+            with left:
+                fig = px.bar(
+                    am_summary,
+                    x="method",
+                    y="mean_pairwise_order_accuracy",
+                    error_y="std_pairwise_order_accuracy",
+                    title="Pairwise Order Accuracy (mean +- std)",
+                    labels={"method": "Method", "mean_pairwise_order_accuracy": "Pairwise Acc"},
+                    color="method",
+                )
+                fig.add_hline(y=0.5, line_dash="dash", line_color="grey", annotation_text="Random baseline")
+                fig.update_layout(showlegend=False)
+                st.plotly_chart(fig, use_container_width=True)
+
+            with right:
+                fig = px.bar(
+                    am_summary,
+                    x="method",
+                    y="mean_kendall_tau",
+                    error_y="std_kendall_tau",
+                    title="Kendall tau (mean +- std)",
+                    labels={"method": "Method", "mean_kendall_tau": "Kendall tau"},
+                    color="method",
+                )
+                fig.add_hline(y=0.0, line_dash="dash", line_color="grey", annotation_text="tau = 0")
+                fig.update_layout(showlegend=False)
+                st.plotly_chart(fig, use_container_width=True)
+
+            heatmap_df = am_rows.pivot(index="method", columns="sequence_id", values="pairwise_order_accuracy")
+            heatmap_df = heatmap_df.reindex([m for m in method_order if m in heatmap_df.index])
+            fig = px.imshow(
+                heatmap_df,
+                text_auto=".2f",
+                color_continuous_scale="RdYlGn",
+                zmin=0,
+                zmax=1,
+                title="Pairwise Order Accuracy - Method x Sequence",
+                labels={"x": "Sequence", "y": "Method", "color": "Pairwise Acc"},
+                aspect="auto",
+            )
+            st.plotly_chart(fig, use_container_width=True)
+
+            st.dataframe(
+                am_summary[
+                    [
+                        "method",
+                        "mean_pairwise_order_accuracy",
+                        "std_pairwise_order_accuracy",
+                        "mean_kendall_tau",
+                        "std_kendall_tau",
+                        "mean_exact_match_accuracy",
+                    ]
+                ].rename(
+                    columns={
+                        "mean_pairwise_order_accuracy": "Mean Pairwise",
+                        "std_pairwise_order_accuracy": "Std Pairwise",
+                        "mean_kendall_tau": "Mean tau",
+                        "std_kendall_tau": "Std tau",
+                        "mean_exact_match_accuracy": "Mean ExactMatch",
+                    }
+                ),
+                hide_index=True,
+                use_container_width=True,
+            )
+
+    with tab2:
+        multi_seed_summary_path = experiments_dir / "multi_seed_summary.csv"
+        multi_seed_results_path = experiments_dir / "multi_seed_results.csv"
+        if not multi_seed_summary_path.exists():
+            st.info("Results not found. Run: python scripts/run_experiments.py --exp 2")
+        else:
+            @st.cache_data
+            def load_multi_seed() -> tuple[pd.DataFrame, pd.DataFrame]:
+                return pd.read_csv(multi_seed_summary_path), pd.read_csv(multi_seed_results_path)
+
+            ms_summary, ms_rows = load_multi_seed()
+            fig = px.line(
+                ms_summary,
+                x="base_seed",
+                y="mean_pairwise_order_accuracy",
+                color="method",
+                markers=True,
+                title="Multi-Seed Pairwise Accuracy",
+                labels={
+                    "base_seed": "Base Seed",
+                    "mean_pairwise_order_accuracy": "Mean Pairwise Acc",
+                    "method": "Method",
+                },
+            )
+            fig.add_hline(y=0.5, line_dash="dash", line_color="grey", annotation_text="Random baseline")
+            st.plotly_chart(fig, use_container_width=True)
+
+            fig = px.box(
+                ms_rows,
+                x="method",
+                y="pairwise_order_accuracy",
+                color="method",
+                title="Pairwise Accuracy Distribution Across Seeds x Sequences",
+                labels={"method": "Method", "pairwise_order_accuracy": "Pairwise Acc"},
+            )
+            fig.add_hline(y=0.5, line_dash="dash", line_color="grey")
+            fig.update_layout(showlegend=False)
+            st.plotly_chart(fig, use_container_width=True)
+
+            stability = (
+                ms_summary.groupby("method")["mean_pairwise_order_accuracy"]
+                .agg(["mean", "std", "min", "max"])
+                .reset_index()
+                .rename(
+                    columns={
+                        "method": "Method",
+                        "mean": "Grand Mean",
+                        "std": "Std Dev",
+                        "min": "Min",
+                        "max": "Max",
+                    }
+                )
+            )
+            stability["Range"] = stability["Max"] - stability["Min"]
+            st.dataframe(stability.round(4), hide_index=True, use_container_width=True)
+
+    with tab3:
+        ws_summary_path = experiments_dir / "weight_sweep_summary.csv"
+        if not ws_summary_path.exists():
+            st.info("Results not found. Run: python scripts/run_experiments.py --exp 3")
+        else:
+            @st.cache_data
+            def load_weight_sweep() -> pd.DataFrame:
+                return pd.read_csv(ws_summary_path)
+
+            ws_summary = load_weight_sweep()
+            pivot = ws_summary.pivot(
+                index="continuity_weight",
+                columns="adjacency_weight",
+                values="mean_pairwise_order_accuracy",
+            ).sort_index(ascending=False)
+
+            fig = px.imshow(
+                pivot,
+                text_auto=".3f",
+                color_continuous_scale="RdYlGn",
+                title="Mean Pairwise Accuracy (Continuity Weight Sweep)",
+                labels={
+                    "x": "Adjacency Weight",
+                    "y": "Continuity Weight",
+                    "color": "Mean Pairwise Acc",
+                },
+                aspect="auto",
+            )
+            st.plotly_chart(fig, use_container_width=True)
+
+            best_row = ws_summary.loc[ws_summary["mean_pairwise_order_accuracy"].idxmax()]
+            st.success(
+                f"Best combo: adjacency_weight={best_row['adjacency_weight']}, "
+                f"continuity_weight={best_row['continuity_weight']} -> "
+                f"mean pairwise acc={best_row['mean_pairwise_order_accuracy']:.4f}"
+            )
+
+            pivot_tau = ws_summary.pivot(
+                index="continuity_weight",
+                columns="adjacency_weight",
+                values="mean_kendall_tau",
+            ).sort_index(ascending=False)
+            fig2 = px.imshow(
+                pivot_tau,
+                text_auto=".3f",
+                color_continuous_scale="RdYlBu",
+                title="Mean Kendall tau (Continuity Weight Sweep)",
+                labels={
+                    "x": "Adjacency Weight",
+                    "y": "Continuity Weight",
+                    "color": "Mean Kendall tau",
+                },
+                aspect="auto",
+            )
+            st.plotly_chart(fig2, use_container_width=True)
+
+            st.dataframe(
+                ws_summary[
+                    [
+                        "adjacency_weight",
+                        "continuity_weight",
+                        "mean_pairwise_order_accuracy",
+                        "mean_kendall_tau",
+                        "mean_exact_match_accuracy",
+                    ]
+                ]
+                .sort_values("mean_pairwise_order_accuracy", ascending=False)
+                .rename(
+                    columns={
+                        "adjacency_weight": "Adj W",
+                        "continuity_weight": "Cont W",
+                        "mean_pairwise_order_accuracy": "Mean Pairwise",
+                        "mean_kendall_tau": "Mean tau",
+                        "mean_exact_match_accuracy": "Mean ExactMatch",
+                    }
+                )
+                .round(4),
+                hide_index=True,
+                use_container_width=True,
+            )
